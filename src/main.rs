@@ -1,32 +1,12 @@
-use std::cmp::Ordering;
-use std::io;
-use rand::Rng;
+use rust_learn::routes;
+use rust_learn::routes::role;
+// use rust_learn::games::guess_number;
+use rust_learn::routes::user;
 
 fn main() {
-    guess_number();
-}
-
-fn guess_number() {
-    println!("Guess the number!!!");
-    let secret_number = rand::thread_rng().gen_range(1, 101);
-    loop {
-        println!("Please input your guess.");
-        let mut guess = String::new();
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line.");
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-        println!("Your guessed: {}", guess);
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
-        }
-    }
+    role::pub_print_role();
+    routes::role::pub_print_role();
+    // guess_number::start();
+    user::called_by_super();
+    user::called_by_absolutely_path();
 }
