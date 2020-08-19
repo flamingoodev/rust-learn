@@ -12,18 +12,18 @@ pub fn t_map() {
     }
     // other create map
     let teams = vec![String::from("Blue"), String::from("Red")];
-    let initial_scores:Vec<u8> = vec![10, 30];
+    let initial_scores: Vec<u8> = vec![10, 30];
     let mut scores: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
     println!("scores size is {}", scores.len());
     let team_yellow = String::from("Yellow");
-    let team_yellow_init_score:u8 = 60;
+    let team_yellow_init_score: u8 = 60;
     scores.insert(&team_yellow, &team_yellow_init_score);
     println!("scores size is {}", scores.len());
     println!("team yellow score is {}", team_yellow_init_score);
     // insert will move ownership
-    let mut mut_scores:HashMap<String, u8> = HashMap::new();
+    let mut mut_scores: HashMap<String, u8> = HashMap::new();
     let yellow = String::from("Yellow");
-    let yellow_init_score:u8 = 60;
+    let yellow_init_score: u8 = 60;
     mut_scores.insert(yellow, yellow_init_score);
     println!("mut_scores len is {}", mut_scores.len());
     // error: borrow of moved value: `yellow`
@@ -31,8 +31,8 @@ pub fn t_map() {
     let key_yellow = String::from("Yellow");
     let score = mut_scores.get(&key_yellow);
     match score {
-        None => {println!("yellow does not exist.")},
-        Some(item) => {println!("yellow team score is {}", item)},
+        None => println!("yellow does not exist."),
+        Some(item) => println!("yellow team score is {}", item),
     }
     // if not use reference,the for loop will be move ownership
     for (k, v) in &mut_scores {
