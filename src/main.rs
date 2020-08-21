@@ -2,11 +2,13 @@
 use rust_learn::collections::t_map;
 use rust_learn::collections::t_vector;
 use rust_learn::routes::{role, user};
+use rust_learn::syntax::t_closure;
+use rust_learn::syntax::t_iter;
 use rust_learn::syntax::t_enum;
 use rust_learn::syntax::t_error;
 use rust_learn::syntax::t_generic::Point;
 use rust_learn::syntax::t_string;
-use rust_learn::syntax::t_trait::{NewsArticle, Summary, Tweet, Summary1};
+use rust_learn::syntax::t_trait::{NewsArticle, Summary, Summary1, Tweet};
 use std::io::Error;
 
 fn main() {
@@ -63,4 +65,6 @@ fn main() {
     };
     let string1 = tweet.summarize();
     println!("{}", string1);
+    t_closure::t_closure();
+    t_iter::t_iter();
 }

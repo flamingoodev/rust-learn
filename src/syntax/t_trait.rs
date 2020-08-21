@@ -26,8 +26,7 @@ impl Summary for NewsArticle {
     }
 }
 
-impl Summary1 for NewsArticle {
-}
+impl Summary1 for NewsArticle {}
 
 impl Summary2 for NewsArticle {
     fn summarize2(&self) -> String {
