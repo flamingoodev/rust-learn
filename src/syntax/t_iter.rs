@@ -1,4 +1,4 @@
-pub fn t_iter () {
+pub fn t_iter() {
     // iterator
     let v1 = vec![1, 2, 3];
     let mut v1_iter = v1.iter();
