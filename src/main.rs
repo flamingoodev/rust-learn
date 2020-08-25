@@ -2,12 +2,14 @@
 use rust_learn::collections::t_map;
 use rust_learn::collections::t_vector;
 use rust_learn::routes::{role, user};
+use rust_learn::syntax::t_channel;
 use rust_learn::syntax::t_closure;
 use rust_learn::syntax::t_enum;
 use rust_learn::syntax::t_error;
 use rust_learn::syntax::t_generic::Point;
 use rust_learn::syntax::t_iter;
 use rust_learn::syntax::t_string;
+use rust_learn::syntax::t_thread;
 use rust_learn::syntax::t_trait::{NewsArticle, Summary, Summary1, Tweet};
 use std::io::Error;
 
@@ -67,4 +69,11 @@ fn main() {
     println!("{}", string1);
     t_closure::t_closure();
     t_iter::t_iter();
+    let i = u8::max_value();
+    println!("u8 max_value = {}", i);
+    // error: attempt to add with overflow
+    // let j = i + 1;
+    // println!("u8 max_value + 1 = {}", j);
+    t_thread::t_thread();
+    t_channel::t_channel();
 }
