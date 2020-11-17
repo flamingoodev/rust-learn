@@ -2,6 +2,7 @@ pub mod t_channel;
 pub mod t_closure;
 pub mod t_enum;
 pub mod t_error;
+pub mod t_function;
 pub mod t_generic;
 pub mod t_iter;
 pub mod t_queue;

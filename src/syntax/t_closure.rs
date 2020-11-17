@@ -1,3 +1,29 @@
+/// 闭包和函数有一个重要的区别：闭包可以捕获外部变量，而函数不可以。
+/// 闭包是由一个匿名结构体和trait组合来实现的
+/// 闭包可以作为参数传递，如下：
+fn math<F: Fn() -> i32>(op: F) -> i32 {
+    op()
+}
+
+/// 闭包可以作为返回值
+fn two_times_impl() -> impl Fn(i32) -> i32 {
+    let i = 2;
+    // move关键字，捕获i的所有权转移到闭包中，避免使用引用进行捕获变量（垂悬指针）
+    move |j| j * i
+}
+#[test]
+fn t_two() {
+    let result = two_times_impl();
+    assert_eq!(result(2), 4);
+}
+#[test]
+fn t_math() {
+    let a = 2;
+    let b = 3;
+    assert_eq!(math(|| a + b), 5);
+    assert_eq!(math(|| a * b), 6);
+}
+
 struct Catchier<T>
 where
     T: Fn(u32) -> u32,
