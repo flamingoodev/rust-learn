@@ -52,3 +52,39 @@ pub fn vec_new() {
         println!("{}", i);
     }
 }
+
+#[warn(dead_code)]
+fn if_let() -> u8 {
+    let boolean = true;
+    let mut binary = 0;
+    if let true = boolean {
+        binary = 1;
+    }
+    binary
+}
+
+#[test]
+fn test_if_let() {
+    assert_eq!(if_let(), 1);
+}
+
+#[warn(dead_code)]
+fn while_let() {
+    let mut v = vec![1, 2, 3, 4, 5];
+    // loop
+    loop {
+        match v.pop() {
+            Some(x) => println!("loop: {}", x),
+            None => break,
+        }
+    }
+    // while let
+    while let Some(x) = v.pop() {
+        println!("while let: {}", x)
+    }
+}
+
+#[test]
+fn test_while_let() {
+    while_let()
+}

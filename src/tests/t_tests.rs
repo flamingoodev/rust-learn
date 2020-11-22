@@ -1,4 +1,4 @@
-use crate::syntax::t_iter::t_iter;
+// use crate::syntax::t_iter::t_iter;
 // this annotation will ignore test when cargo build
 #[cfg(test)]
 #[test]
@@ -22,7 +22,7 @@ fn test_it_works() {
 }
 #[test]
 fn test_iter() {
-    t_iter();
+    // syntax::t_iter();
 }
 #[test]
 fn test_result() -> Result<(), String> {

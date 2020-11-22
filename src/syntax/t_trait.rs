@@ -33,6 +33,7 @@ impl Summary2 for NewsArticle {
         unimplemented!()
     }
 }
+
 pub struct Tweet {
     pub username: String,
     pub content: String,

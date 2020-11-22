@@ -1,7 +1,7 @@
 use std::sync::mpsc;
-use std::sync::mpsc::TryRecvError;
+// use std::sync::mpsc::TryRecvError;
 use std::thread;
-use std::thread::sleep;
+// use std::thread::sleep;
 use std::time::Duration;
 
 pub fn t_channel() {
@@ -24,7 +24,7 @@ pub fn t_channel() {
             println!("Got: {}", received);
         }
         Err(err) => {
-            println!("Got error");
+            println!("Got error: {}", err);
         }
     };
     println!("--------------------------");
@@ -37,7 +37,8 @@ pub fn t_channel() {
             String::from("thread"),
         ];
         for i in v {
-            sender.send(i);
+            let x = sender.send(i);
+            println!("x = {:?}", x);
             thread::sleep(Duration::from_secs(1));
         }
     });

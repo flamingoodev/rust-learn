@@ -12,7 +12,6 @@ use rust_learn::syntax::t_queue;
 use rust_learn::syntax::t_string;
 use rust_learn::syntax::t_thread;
 use rust_learn::syntax::t_trait::{NewsArticle, Summary, Summary1, Tweet};
-use std::io::Error;
 
 fn main() {
     role::pub_print_role();

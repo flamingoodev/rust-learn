@@ -34,7 +34,8 @@ pub fn t_string() {
     // println!("str1 = {}", str1);
     // value borrowed here
     // the first param is self not &self, so the value will be borrowed
-    str3.add("!");
+    let x = str3.add("!");
+    println!("x = {}", x);
     // error: value borrowed here after move
     // println!("str3 = {}", str3);
     let str4 = String::from("hello");
