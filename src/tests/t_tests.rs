@@ -1,3 +1,5 @@
+use std::mem::size_of_val;
+
 // use crate::syntax::t_iter::t_iter;
 // this annotation will ignore test when cargo build
 #[cfg(test)]
@@ -31,4 +33,11 @@ fn test_result() -> Result<(), String> {
     } else {
         Err(String::from("Error"))
     }
+}
+
+#[test]
+fn test_size() {
+    let array: [u8; 10] = [1; 10];
+    let slice = &array;
+    println!("array size = {}", size_of_val(slice));
 }
