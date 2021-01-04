@@ -11,6 +11,7 @@ use rust_learn::syntax::t_iter;
 use rust_learn::syntax::t_queue;
 use rust_learn::syntax::t_string;
 use rust_learn::syntax::t_thread;
+use rust_learn::syntax::t_size;
 use rust_learn::syntax::t_trait::{NewsArticle, Summary, Summary1, Tweet};
 
 fn main() {
@@ -93,4 +94,5 @@ fn main() {
     }
     println!("size = {}, data = {:#?}", queue.size(), queue);
     println!("---------------------Queue----------------------");
+    t_size::test_size();
 }
