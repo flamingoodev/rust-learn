@@ -16,6 +16,6 @@ fn test_master_pointer() {
 }
 
 #[test]
-fn t_test_master_pointer(){
+fn t_test_master_pointer() {
     test_master_pointer();
 }

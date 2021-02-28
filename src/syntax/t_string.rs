@@ -50,3 +50,9 @@ pub fn t_string() {
         println!("{}", c);
     }
 }
+
+#[test]
+pub fn t_char() {
+    let mut x = 'T';
+    println!("{}", x);
+}

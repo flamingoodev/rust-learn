@@ -1,5 +1,5 @@
-use std::mem::size_of_val;
 use std::mem::size_of;
+use std::mem::size_of_val;
 
 struct Test<'a> {
     _a: i32,

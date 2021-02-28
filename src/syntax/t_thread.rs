@@ -53,9 +53,7 @@ pub fn t_thread4() {
     // Rc是用于引用计数的智能指针
     // let mut x = Rc::new(vec![1, 2, 3]);
     // move关键字将所有权转移给了子线程，主线程将无法访问该变量
-    thread::spawn(move || {
-        x.push(4)
-    });
+    thread::spawn(move || x.push(4));
     // error
     // x.push(5);
 }
