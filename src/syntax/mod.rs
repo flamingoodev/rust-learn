@@ -9,6 +9,8 @@ pub mod t_queue;
 pub mod t_size;
 pub mod t_smart_pointer;
 pub mod t_string;
+pub mod t_struct;
 pub mod t_thread;
 pub mod t_trait;
 mod t_type;
+mod t_command;
