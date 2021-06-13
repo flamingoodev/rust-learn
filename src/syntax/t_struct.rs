@@ -30,7 +30,7 @@ pub fn t_struct_test() {
 }
 
 #[test]
-pub fn t_struct_move_test () {
+pub fn t_struct_move_test() {
     let book1 = Book {
         name: "Rust权威指南",
         isbn: 201801,
