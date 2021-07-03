@@ -40,12 +40,8 @@ fn square_1(number_str: &str) -> ParseResult<i32> {
 #[test]
 fn t_result_type() {
     let s = match square_1("10") {
-        Ok(x) => {
-            x
-        }
-        Err(_) => {
-            0
-        }
+        Ok(x) => x,
+        Err(_) => 0,
     };
     println!("{}", s);
     match i32::from_str_radix("10a", 10) {
