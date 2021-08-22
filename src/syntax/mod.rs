@@ -6,6 +6,7 @@ pub mod t_error;
 pub mod t_function;
 pub mod t_generic;
 pub mod t_iter;
+mod t_macro;
 pub mod t_option;
 pub mod t_queue;
 mod t_result;

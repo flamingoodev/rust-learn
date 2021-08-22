@@ -51,8 +51,14 @@ pub fn t_string() {
     }
 }
 
+fn stark() -> &'static str {
+    "stark"
+}
+
 #[test]
 pub fn t_char() {
     let mut x = 'T';
     println!("{}", x);
+    let res = stark();
+    println!("{}", res);
 }
