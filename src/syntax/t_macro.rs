@@ -8,7 +8,7 @@ macro_rules! unless {
 
 fn cmp(a: i32, b: i32) {
     unless!(
-        (a > b) => { println!("{} < {}", a, b)}
+        (a > b) => { println!("{} < {}", a, b) }
     )
 }
 

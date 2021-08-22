@@ -49,7 +49,7 @@ fn t_result_type() {
             println!("{}", x);
         }
         Err(err) => {
-            println!("{}", err)
+            println!("{}", err);
         }
-    }
+    };
 }

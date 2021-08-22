@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn t_type() {
     // num
     let num = 42u32;

@@ -7,7 +7,7 @@ fn math<F: Fn() -> i32>(op: F) -> i32 {
 }
 
 /// 闭包可以作为返回值
-#[warn(dead_code)]
+#[allow(dead_code)]
 fn two_times_impl() -> impl Fn(i32) -> i32 {
     let i = 2;
     // move关键字，捕获i的所有权转移到闭包中，避免使用引用进行捕获变量（垂悬指针）

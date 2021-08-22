@@ -50,10 +50,10 @@ pub fn panic_hook() {
             println!("can't get location information...");
         }
     }));
-    panic::catch_unwind(|| {
+    let s = panic::catch_unwind(|| {
         panic!("panic");
     });
-    println!("{}", "continue...")
+    println!("{}", s.is_err());
 }
 
 #[test]
