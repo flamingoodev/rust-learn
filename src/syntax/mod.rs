@@ -1,6 +1,7 @@
 pub mod t_channel;
 pub mod t_closure;
 mod t_command;
+mod t_copy;
 pub mod t_enum;
 pub mod t_error;
 pub mod t_function;

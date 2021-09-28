@@ -30,7 +30,6 @@ impl Area for Sharpe<Rectangle> {
     }
 }
 
-
 impl Area for Sharpe<Circle> {
     fn area(&self) -> f64 {
         PI * self.sharpe.r * self.sharpe.r
@@ -39,17 +38,12 @@ impl Area for Sharpe<Circle> {
 
 #[test]
 fn t_sharpe_test() {
-    let rec = Rectangle {
-        a: 10f64,
-        b: 20f64,
-    };
+    let rec = Rectangle { a: 10f64, b: 20f64 };
     let sharpe = Sharpe { sharpe: rec };
     let area = sharpe.area();
     println!("Rectangle area is {}", area);
     //
-    let cir = Circle {
-        r: 10f64
-    };
+    let cir = Circle { r: 10f64 };
     let sharpe1 = Sharpe { sharpe: cir };
     let area1 = sharpe1.area();
     println!("Circle area is {}", area1);
