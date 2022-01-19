@@ -18,3 +18,4 @@ pub mod t_struct;
 pub mod t_thread;
 pub mod t_trait;
 mod t_type;
+mod t_sync;
