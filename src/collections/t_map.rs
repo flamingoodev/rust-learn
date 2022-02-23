@@ -10,6 +10,11 @@ pub fn t_map() {
         None => println!("Math does not exist."),
         Some(score) => println!("Math score is {}", score),
     }
+    if let Some(score) = option {
+        println!("Math score is {}", score);
+    } else {
+        println!("Math does not exist.");
+    }
     // other create map
     let teams = vec![String::from("Blue"), String::from("Red")];
     let initial_scores: Vec<u8> = vec![10, 30];
