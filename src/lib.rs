@@ -7,3 +7,4 @@ pub mod routes;
 pub mod smartpointer;
 pub mod syntax;
 pub mod tests;
+pub mod rust_by_example;
