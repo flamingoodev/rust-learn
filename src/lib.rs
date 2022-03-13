@@ -8,3 +8,4 @@ pub mod smartpointer;
 pub mod syntax;
 pub mod tests;
 pub mod rust_by_example;
+pub mod rust_quiz;
