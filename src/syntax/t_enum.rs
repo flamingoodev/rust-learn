@@ -1,6 +1,6 @@
-use strum::{Display, EnumCount, EnumDiscriminants, EnumString};
-
 use std::str::FromStr;
+
+use strum::{Display, EnumCount, EnumDiscriminants, EnumString};
 
 enum SpreadsheetCell {
     Int(i32),
@@ -14,7 +14,9 @@ enum Color {
     #[strum(to_string = "RedRed")]
     Red,
     #[strum(serialize = "b", to_string = "blue")]
-    Blue { hue: usize },
+    Blue {
+        hue: usize,
+    },
     #[strum(serialize = "y", serialize = "yellow")]
     Yellow,
     White,
@@ -24,8 +26,11 @@ enum Color {
 
 #[test]
 fn t_strum() {
+    let red = format!("{:?}", Color::Red);
+    println!("{}", red); // Red
+    println!("{:?}", Color::Red); // Red
     let color: String = Color::Red.to_string();
-    println!("{}", color); // Red
+    println!("{}", color); // RedRed
 
     let new_color = "y";
     let s = Color::try_from(new_color).unwrap();

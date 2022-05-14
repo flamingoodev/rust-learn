@@ -1,3 +1,4 @@
+mod t_bind;
 pub mod t_channel;
 pub mod t_closure;
 mod t_command;
@@ -15,8 +16,8 @@ pub mod t_size;
 pub mod t_smart_pointer;
 pub mod t_string;
 pub mod t_struct;
+mod t_sync;
 pub mod t_thread;
 pub mod t_trait;
+mod t_turbo_fish;
 mod t_type;
-mod t_sync;
-mod t_bind;

@@ -17,19 +17,18 @@ fn if_else() {
         print!("{} is zero", n);
     }
 
-    let big_n =
-        if n < 10 && n > -10 {
-            println!(", and is a small number, increase ten-fold");
+    let big_n = if n < 10 && n > -10 {
+        println!(", and is a small number, increase ten-fold");
 
-            // 这个表达式返回一个 `i32` 类型。
-            10 * n
-        } else {
-            println!(", and is a big number, half the number");
+        // 这个表达式返回一个 `i32` 类型。
+        10 * n
+    } else {
+        println!(", and is a big number, half the number");
 
-            // 这个表达式也必须返回一个 `i32` 类型。
-            n / 2
-            // 试一试 ^ 试着加上一个分号来结束这条表达式。
-        };
+        // 这个表达式也必须返回一个 `i32` 类型。
+        n / 2
+        // 试一试 ^ 试着加上一个分号来结束这条表达式。
+    };
     //   ^ 不要忘记在这里加上一个分号！所有的 `let` 绑定都需要它。
 
     println!("{} -> {}", n, big_n);
@@ -174,7 +173,6 @@ fn for_fizz_buzz() {
     }
 }
 
-
 #[test]
 fn t_for_fizz_buzz() {
     for_fizz_buzz();
@@ -315,9 +313,9 @@ fn destructuring_tuples() {
     match triple {
         // 解构出第二个和第三个元素
         (0, y, z) => println!("First is `0`, `y` is {:?}, and `z` is {:?}", y, z),
-        (1, ..)  => println!("First is `1` and the rest doesn't matter"),
+        (1, ..) => println!("First is `1` and the rest doesn't matter"),
         // `..` 可用来忽略元组的其余部分
-        _      => println!("It doesn't matter what they are"),
+        _ => println!("It doesn't matter what they are"),
         // `_` 表示不将值绑定到变量
     }
 }
@@ -346,20 +344,17 @@ fn destructuring_enum() {
     println!("What color is it?");
     // 可以使用 `match` 来解构 `enum`。
     match color {
-        Color::Red   => println!("The color is Red!"),
-        Color::Blue  => println!("The color is Blue!"),
+        Color::Red => println!("The color is Red!"),
+        Color::Blue => println!("The color is Blue!"),
         Color::Green => println!("The color is Green!"),
-        Color::RGB(r, g, b) =>
-            println!("Red: {}, green: {}, and blue: {}!", r, g, b),
-        Color::HSV(h, s, v) =>
-            println!("Hue: {}, saturation: {}, value: {}!", h, s, v),
-        Color::HSL(h, s, l) =>
-            println!("Hue: {}, saturation: {}, lightness: {}!", h, s, l),
-        Color::CMY(c, m, y) =>
-            println!("Cyan: {}, magenta: {}, yellow: {}!", c, m, y),
-        Color::CMYK(c, m, y, k) =>
-            println!("Cyan: {}, magenta: {}, yellow: {}, key (black): {}!",
-                     c, m, y, k),
+        Color::RGB(r, g, b) => println!("Red: {}, green: {}, and blue: {}!", r, g, b),
+        Color::HSV(h, s, v) => println!("Hue: {}, saturation: {}, value: {}!", h, s, v),
+        Color::HSL(h, s, l) => println!("Hue: {}, saturation: {}, lightness: {}!", h, s, l),
+        Color::CMY(c, m, y) => println!("Cyan: {}, magenta: {}, yellow: {}!", c, m, y),
+        Color::CMYK(c, m, y, k) => println!(
+            "Cyan: {}, magenta: {}, yellow: {}, key (black): {}!",
+            c, m, y, k
+        ),
         // 不需要其它分支，因为所有的情形都已覆盖
     }
 }
@@ -416,7 +411,7 @@ fn destructuring_ref() {
             // 已经获得了 `mut_value` 的引用，先要解引用，才能改变它的值。
             *m += 10;
             println!("We added 10. `mut_value`: {:?}", m);
-        },
+        }
     }
 }
 
@@ -424,7 +419,10 @@ fn destructuring_ref() {
 // 类似地，解构 struct 如下所示：
 
 fn destructuring_struct() {
-    struct Foo { x: (u32, u32), y: u32 }
+    struct Foo {
+        x: (u32, u32),
+        y: u32,
+    }
 
     // 解构结构体的成员
     let foo = Foo { x: (1, 2), y: 3 };
@@ -485,13 +483,13 @@ fn match_bind() {
     println!("Tell me what type of person you are");
 
     match age() {
-        0             => println!("I haven't celebrated my first birthday yet"),
+        0 => println!("I haven't celebrated my first birthday yet"),
         // 可以直接匹配（`match`） 1 ..= 12，但那样的话孩子会是几岁？
         // 相反，在 1 ..= 12 分支中绑定匹配值到 `n` 。现在年龄就可以读取了。
-        n @ 1  ..= 12 => println!("I'm a child of age {:?}", n),
-        n @ 13 ..= 19 => println!("I'm a teen of age {:?}", n),
+        n @ 1..=12 => println!("I'm a child of age {:?}", n),
+        n @ 13..=19 => println!("I'm a teen of age {:?}", n),
         // 不符合上面的范围。返回结果。
-        n             => println!("I'm an old person of age {:?}", n),
+        n => println!("I'm an old person of age {:?}", n),
     }
 }
 
@@ -508,19 +506,18 @@ fn test_match() {
         // 得到 `Some` 可变类型，如果它的值（绑定到 `n` 上）等于 42，则匹配。
         Some(n @ 42) => println!("The Answer: {}!", n),
         // 匹配任意其他数字。
-        Some(n)      => println!("Not interesting... {}", n),
+        Some(n) => println!("Not interesting... {}", n),
         // 匹配任意其他值（`None` 可变类型）。
-        _            => (),
+        _ => (),
     }
 }
 
 /// if let
 // 在一些场合下，用 match 匹配枚举类型并不优雅。比如：
 
-
 #[allow(unused)]
 fn if_let() {
-// 将 `optional` 定为 `Option<i32>` 类型
+    // 将 `optional` 定为 `Option<i32>` 类型
     let optional = Some(7);
 
     match optional {
@@ -528,9 +525,8 @@ fn if_let() {
             println!("This is a really long string and `{:?}`", i);
             // ^ 行首需要 2 层缩进。这里从 optional 中解构出 `i`。
             // 译注：正确的缩进是好的，但并不是 “不缩进就不能运行” 这个意思。
-        },
-        _ => {},
-        // ^ 必须有，因为 `match` 需要覆盖全部情况。不觉得这行很多余吗？
+        }
+        _ => {} // ^ 必须有，因为 `match` 需要覆盖全部情况。不觉得这行很多余吗？
     };
 }
 
@@ -575,7 +571,7 @@ fn if_let_1() {
 enum Foo {
     Bar,
     Baz,
-    Qux(u32)
+    Qux(u32),
 }
 
 #[allow(unused)]
@@ -632,10 +628,10 @@ fn if_let_3() {
 
 #[allow(unused)]
 fn while_let() {
-// 将 `optional` 设为 `Option<i32>` 类型
+    // 将 `optional` 设为 `Option<i32>` 类型
     let mut optional = Some(0);
 
-// 重复运行这个测试。
+    // 重复运行这个测试。
     loop {
         match optional {
             // 如果 `optional` 解构成功，就执行下面语句块。
@@ -648,10 +644,11 @@ fn while_let() {
                     optional = Some(i + 1);
                 }
                 // ^ 需要三层缩进！
-            },
+            }
             // 当解构失败时退出循环：
-            _ => { break; }
-            // ^ 为什么必须写这样的语句呢？肯定有更优雅的处理方式！
+            _ => {
+                break;
+            } // ^ 为什么必须写这样的语句呢？肯定有更优雅的处理方式！
         }
     }
 }
@@ -688,4 +685,3 @@ fn t_flow() {
     while_let();
     while_let_1();
 }
-

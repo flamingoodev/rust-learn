@@ -144,10 +144,12 @@ fn alias() {
     let inches: Inch = 2 as u64_t;
 
     // 注意类型别名*并不能*提供额外的类型安全，因为别名*并不是*新的类型。
-    println!("{} nanoseconds + {} inches = {} unit?",
-             nanoseconds,
-             inches,
-             nanoseconds + inches);
+    println!(
+        "{} nanoseconds + {} inches = {} unit?",
+        nanoseconds,
+        inches,
+        nanoseconds + inches
+    );
 }
 
 #[test]
@@ -156,5 +158,3 @@ fn t_alias() {
 }
 
 // 别名的主要用途是避免写出冗长的模板化代码（boilerplate code）。如 IoResult<T> 是 Result<T, IoError> 类型的别名。
-
-

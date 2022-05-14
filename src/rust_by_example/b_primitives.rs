@@ -21,12 +21,12 @@ fn var_type() {
     // 变量可以给出类型说明。
     let logical: bool = true;
 
-    let a_float: f64 = 1.0;  // 常规说明
+    let a_float: f64 = 1.0; // 常规说明
     let an_integer = 5i32; // 后缀说明
 
     // 否则会按默认方式决定类型。
     let default_float = 3.0; // `f64`
-    let default_integer = 7;   // `i32`
+    let default_integer = 7; // `i32`
 
     // 类型也可根据上下文自动推断。
     let mut inferred_type = 12; // 根据下一行的赋值推断为 i64 类型
@@ -108,10 +108,9 @@ struct Matrix(f32, f32, f32, f32);
 
 fn tuple() {
     // 包含各种不同类型的元组
-    let long_tuple = (1u8, 2u16, 3u32, 4u64,
-                      -1i8, -2i16, -3i32, -4i64,
-                      0.1f32, 0.2f64,
-                      'a', true);
+    let long_tuple = (
+        1u8, 2u16, 3u32, 4u64, -1i8, -2i16, -3i32, -4i64, 0.1f32, 0.2f64, 'a', true,
+    );
 
     // 通过元组的下标来访问具体的值
     println!("long tuple first value: {}", long_tuple.0);
@@ -134,7 +133,7 @@ fn tuple() {
     println!("the reversed pair is {:?}", reverse(pair));
 
     // 创建单元素元组需要一个额外的逗号，这是为了和被括号包含的字面量作区分。
-    println!("one element tuple: {:?}", (5u32, ));
+    println!("one element tuple: {:?}", (5u32,));
     println!("just an integer: {:?}", (5u32));
 
     // 元组可以被解构（deconstruct），从而将值绑定给变量
@@ -160,7 +159,6 @@ fn t_tuple() {
 // 切片（slice）类型和数组类似，但其大小在编译时是不确定的。相反，切片是一个双字对象（two-word object），
 // 第一个字是一个指向数据的指针，第二个字是切片的长度。这个 “字” 的宽度和 usize 相同，由处理器架构决定，
 // 比如在 x86-64 平台上就是 64 位。slice 可以用来借用数组的一部分。slice 的类型标记为 &[T]。
-
 use std::mem;
 
 // 此函数借用一个 slice
@@ -192,7 +190,7 @@ fn arr() {
 
     // slice 可以指向数组的一部分
     println!("borrow a section of the array as a slice");
-    analyze_slice(&ys[1 .. 4]);
+    analyze_slice(&ys[1..4]);
 
     // 越界的下标会引发致命错误（panic）
     // println!("{}", xs[5]);

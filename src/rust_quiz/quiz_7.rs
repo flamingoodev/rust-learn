@@ -18,9 +18,7 @@ impl Enum {
 
 #[test]
 fn test_quiz_7() {
-    Enum::p(unsafe {
-        std::mem::transmute(1u8)
-    });
+    Enum::p(unsafe { std::mem::transmute(1u8) });
 }
 
 // The program exhibits undefined behavior

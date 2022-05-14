@@ -61,11 +61,17 @@ fn custom_struct() {
     println!("second point: ({}, {})", bottom_right.x, bottom_right.y);
 
     // 使用 `let` 绑定来解构 point
-    let Point { x: left_edge, y: top_edge } = point;
+    let Point {
+        x: left_edge,
+        y: top_edge,
+    } = point;
 
     let _rectangle = Rectangle {
         // 结构体的实例化也是一个表达式
-        top_left: Point { x: left_edge, y: top_edge },
+        top_left: Point {
+            x: left_edge,
+            y: top_edge,
+        },
         bottom_right: bottom_right,
     };
 
@@ -88,7 +94,6 @@ fn custom_struct() {
 fn t_custom_struct() {
     custom_struct();
 }
-
 
 /// 2.枚举
 // enum 关键字允许创建一个从数个不同取值中选其一的枚举类型（enumeration）。
@@ -146,7 +151,6 @@ fn t_custom_enum() {
     custom_enum();
 }
 
-
 /// 3.类型别名
 // 若使用类型别名，则可以通过其别名引用每个枚举变量。
 // 当枚举的名称太长或者太一般化，且你想要对其重命名，那么这对你会有所帮助。
@@ -170,7 +174,6 @@ fn type_alias() {
 fn t_type_alias() {
     type_alias();
 }
-
 
 /// 最常见的情况就是在 impl 块中使用 Self 别名。
 
@@ -227,7 +230,6 @@ fn t_enum_use() {
     enum_use();
 }
 
-
 /// 3.1.2 C 风格用法
 // enum 也可以像 C 语言风格的枚举类型那样使用。
 
@@ -262,10 +264,8 @@ fn t_enum_lick_c() {
     enum_lick_c();
 }
 
-
 /// 3.1.3 测试实例：链表
 // enum 的一个常见用法就是创建链表（linked-list）：
-
 use List::*;
 
 enum List {
@@ -300,7 +300,7 @@ impl List {
             // 因此使用一个对 tail 的引用
             Cons(_, ref tail) => 1 + tail.len(),
             // （递归的）基准情形（base case）：一个长度为 0 的空列表
-            Nil => 0
+            Nil => 0,
         }
     }
 
@@ -311,10 +311,10 @@ impl List {
                 // `format!` 和 `print!` 类似，但返回的是一个堆分配的字符串，
                 // 而不是打印结果到控制台上
                 format!("{}, {}", head, tail.stringify())
-            },
+            }
             Nil => {
                 format!("Nil")
-            },
+            }
         }
     }
 }
@@ -347,10 +347,9 @@ fn t_list() {
 // &'static str 就包含了所要求的生命周期 'static。其他的引用类型都 必须特地声明，使之拥有'static 生命周期。
 // 这两种引用类型的差异似乎也无关紧要，因 为无论如何，static 变量都得显式地声明。
 
-
 // 全局变量是在在所有其他作用域之外声明的。
 static LANGUAGE: &'static str = "Rust";
-const  THRESHOLD: i32 = 10;
+const THRESHOLD: i32 = 10;
 
 fn is_big(n: i32) -> bool {
     // 在一般函数中访问常量
@@ -374,4 +373,3 @@ fn _static() {
 fn t_static() {
     _static();
 }
-

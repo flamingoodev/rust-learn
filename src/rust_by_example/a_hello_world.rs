@@ -70,23 +70,30 @@ fn formatted_print() {
 
     // 用变量替换字符串有多种写法。
     // 比如可以使用位置参数。
-    println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob");
+    let alice = "Alice";
+    let bob = "Bob";
+    println!("{0}, this is {1}. {1}, this is {0}", alice, bob);
 
     // 可以使用命名参数。
-    println!("{subject} {verb} {object}",
-             object="the lazy dog",
-             subject="the quick brown fox",
-             verb="jumps over");
+    let obj = "the lazy dog";
+    let sub = "the quick brown fox";
+    let verb = "jumps over";
+    println!(
+        "{subject} {verb} {object}",
+        object = obj,
+        subject = sub,
+        verb = verb
+    );
 
     // 可以在 `:` 后面指定特殊的格式。
     println!("{} of {:b} people know binary, the other half don't", 1, 2);
 
     // 你可以按指定宽度来右对齐文本。
     // 下面语句输出 "     1"，5 个空格后面连着 1。
-    println!("{number:>width$}", number=1, width=6);
+    println!("{number:>width$}", number = 1, width = 6);
 
     // 你可以在数字左边补 0。下面语句输出 "000001"。
-    println!("{number:>0width$}", number=1, width=6);
+    println!("{number:>0width$}", number = 1, width = 6);
 
     // println! 会检查使用到的参数数量是否正确。
     // println!("My name is {0}, {1} {0}", "Bond");
@@ -139,10 +146,12 @@ struct Deep(Structure);
 fn std_print() {
     // 使用 `{:?}` 打印和使用 `{}` 类似。
     println!("{:?} months in a year.", 12);
-    println!("{1:?} {0:?} is the {actor:?} name.",
-             "Slater",
-             "Christian",
-             actor="actor's");
+    println!(
+        "{1:?} {0:?} is the {actor:?} name.",
+        "Slater",
+        "Christian",
+        actor = "actor's"
+    );
 
     // `Structure` 也可以打印！
     println!("Now {:?} will print!", Structure(3));
@@ -166,7 +175,7 @@ fn display() {
     use std::fmt;
 
     // 定义一个结构体，咱们会为它实现 `fmt::Display`。以下是个简单的元组结构体
-// `Structure`，包含一个 `i32` 元素。
+    // `Structure`，包含一个 `i32` 元素。
     struct Structure(i32);
 
     // 为了使用 `{}` 标记，必须手动为类型实现 `fmt::Display` trait。
@@ -222,12 +231,14 @@ fn display_1() {
     println!("Display: {}", minmax);
     println!("Debug: {:?}", minmax);
 
-    let big_range =   MinMax(-300, 300);
+    let big_range = MinMax(-300, 300);
     let small_range = MinMax(-3, 3);
 
-    println!("The big range is {big} and the small is {small}",
-             small = small_range,
-             big = big_range);
+    println!(
+        "The big range is {big} and the small is {small}",
+        small = small_range,
+        big = big_range
+    );
 
     let point = Point2D { x: 3.3, y: 7.2 };
 
@@ -239,7 +250,6 @@ fn display_1() {
     // 得到实现。这语句不能运行。
     // println!("What does Point2D look like in binary: {:b}?", point);
 }
-
 
 #[test]
 fn t_display1() {
@@ -274,7 +284,9 @@ impl fmt::Display for List {
         for (count, v) in vec.iter().enumerate() {
             // 对每个元素（第一个元素除外）加上逗号。
             // 使用 `?` 或 `try!` 来返回错误。
-            if count != 0 { write!(f, ", ")?; }
+            if count != 0 {
+                write!(f, ", ")?;
+            }
             write!(f, "{}", v)?;
         }
 
@@ -299,8 +311,7 @@ fn t_list_display() {
 // 根据使用的参数类型是 X、o 还是未指定，同样的变量（foo）能够格式化 成不同的形式。
 //
 // 这个格式化的功能是通过 trait 实现的，每种参数类型都对应一种 trait。最常见的格式 化 trait 就是 Display，它可以处理参数类型为未指定的情况，比如 {}。
-
-use std::fmt::{Formatter, Display};
+use std::fmt::{Display, Formatter};
 
 struct City {
     name: &'static str,
@@ -318,8 +329,15 @@ impl Display for City {
 
         // `write!` 和 `format!` 类似，但它会将格式化后的字符串写入
         // 一个缓冲区（即第一个参数f）中。
-        write!(f, "{}: {:.3}°{} {:.3}°{}",
-               self.name, self.lat.abs(), lat_c, self.lon.abs(), lon_c)
+        write!(
+            f,
+            "{}: {:.3}°{} {:.3}°{}",
+            self.name,
+            self.lat.abs(),
+            lat_c,
+            self.lon.abs(),
+            lon_c
+        )
     }
 }
 
@@ -332,17 +350,45 @@ struct Color {
 
 fn format() {
     for city in [
-        City { name: "Dublin", lat: 53.347778, lon: -6.259722 },
-        City { name: "Oslo", lat: 59.95, lon: 10.75 },
-        City { name: "Vancouver", lat: 49.25, lon: -123.1 },
-    ].iter() {
+        City {
+            name: "Dublin",
+            lat: 53.347778,
+            lon: -6.259722,
+        },
+        City {
+            name: "Oslo",
+            lat: 59.95,
+            lon: 10.75,
+        },
+        City {
+            name: "Vancouver",
+            lat: 49.25,
+            lon: -123.1,
+        },
+    ]
+    .iter()
+    {
         println!("{}", *city);
     }
     for color in [
-        Color { red: 128, green: 255, blue: 90 },
-        Color { red: 0, green: 3, blue: 254 },
-        Color { red: 0, green: 0, blue: 0 },
-    ].iter() {
+        Color {
+            red: 128,
+            green: 255,
+            blue: 90,
+        },
+        Color {
+            red: 0,
+            green: 3,
+            blue: 254,
+        },
+        Color {
+            red: 0,
+            green: 0,
+            blue: 0,
+        },
+    ]
+    .iter()
+    {
         // 在添加了针对 fmt::Display 的实现后，请改用 {} 检验效果。
         println!("{:?}", *color)
     }
@@ -352,5 +398,3 @@ fn format() {
 fn t_format() {
     format();
 }
-
-

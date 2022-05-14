@@ -27,7 +27,6 @@ fn t_d_variable_bindings() {
     variable_bindings();
 }
 
-
 /// 1.可变变量
 // 变量绑定默认是不可变的（immutable），但加上 mut 修饰语后变量就可以改变。
 
@@ -150,4 +149,3 @@ fn variable_freeze() {
 fn t_variable_freeze() {
     variable_freeze();
 }
-

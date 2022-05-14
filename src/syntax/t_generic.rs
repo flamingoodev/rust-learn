@@ -1,6 +1,6 @@
+use std::any::type_name;
 use std::ops::Mul;
 use std::sync::Arc;
-use std::any::type_name;
 
 #[derive(Debug)]
 pub struct Point<T> {
@@ -73,7 +73,9 @@ impl Watch for B {
 
 fn main() {
     let a = A { data: 10 };
-    let b = B { data: String::from("B") };
+    let b = B {
+        data: String::from("B"),
+    };
     assert_eq!(10, a.info());
     assert_eq!(Some(String::from("B")), b.inner());
 }
@@ -96,11 +98,11 @@ impl Point<usize> {
 
 /// 定义了函数
 /// Mul有理数限定
-fn square<T: Mul + Mul<Output=T>>(x: T, y: T) -> T {
+fn square<T: Mul + Mul<Output = T>>(x: T, y: T) -> T {
     x * y
 }
 
-fn square1<T: Mul<T, Output=T>>(x: T, y: T) -> T {
+fn square1<T: Mul<T, Output = T>>(x: T, y: T) -> T {
     x * y
 }
 

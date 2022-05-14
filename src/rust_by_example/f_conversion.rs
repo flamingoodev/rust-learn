@@ -71,7 +71,6 @@ fn t_into() {
 /// 2.TryFrom and TryInto
 // 类似于 From 和 Into，TryFrom 和 TryInto 是 类型转换的通用 trait。
 // 不同于 From/Into 的是，TryFrom 和 TryInto trait 用于易出错的转换，也正因如此，其返回值是 Result 型。
-
 use std::convert::TryFrom;
 use std::convert::TryInto;
 
@@ -114,7 +113,6 @@ fn t_try_from() {
 // 要把任何类型转换成 String，只需要实现那个类型的 ToString trait。
 // 然而不要直接这么做，您应该实现fmt::Display trait，它会自动提供 ToString，
 // 并且还可以用来打印类型，就像 print! 一节中讨论的那样。
-
 use std::string::ToString;
 
 struct Circle {
@@ -137,7 +135,6 @@ fn t_to_string() {
     to_string();
 }
 
-
 /// 解析字符串
 // 我们经常需要把字符串转成数字。完成这项工作的标准手段是用 parse 函数。
 // 我们得提供要转换到的类型，这可以通过不使用类型推断，或者用 “涡轮鱼” 语法（turbo fish，<>）实现。
@@ -150,9 +147,8 @@ fn from_str() {
     let turbo_parsed = "10".parse::<i32>().unwrap();
 
     let sum = parsed + turbo_parsed;
-    println!{"Sum: {:?}", sum};
+    println! {"Sum: {:?}", sum};
 }
-
 
 #[test]
 fn t_from_str() {

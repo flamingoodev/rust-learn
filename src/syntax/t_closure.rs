@@ -1,7 +1,7 @@
 /// 闭包和函数有一个重要的区别：闭包可以捕获外部变量，而函数不可以。
 /// 闭包是由一个匿名结构体和trait组合来实现的
 /// move关键字是强制让环境变量的所有权转移到闭包中而不管是不是发生了所有权的转移
-/// move关键字和匿名函数是否是FnOnce没有必然联系，之和匿名函数体有关
+/// move关键字和匿名函数是否是FnOnce没有必然联系，只和匿名函数体有关
 /// 当匿名函数体里转移了环境变量的所有权的时候，匿名函数就是FnOnce。
 /// 当匿名函数体里改变了环境变量的值的时候，匿名函数就是FnMut。
 /// 否则匿名函数就是Fn。
@@ -34,16 +34,16 @@ fn t_math() {
 }
 
 struct Catchier<T>
-    where
-        T: Fn(u32) -> u32,
+where
+    T: Fn(u32) -> u32,
 {
     cal: T,
     val: Option<u32>,
 }
 
 impl<T> Catchier<T>
-    where
-        T: Fn(u32) -> u32,
+where
+    T: Fn(u32) -> u32,
 {
     fn new(cal: T) -> Catchier<T> {
         Catchier { cal, val: None }
@@ -94,7 +94,9 @@ pub fn t_fn() {
 }
 
 /// 2.如果捕获变量是复制语义类型，则闭包会实现Copy/Clone。如果捕获变量是移动语义类型，则闭包不会实现Copy/Clone。普通闭包都是移动语义
-fn call<F: FnOnce()>(f: F) { f() }
+fn call<F: FnOnce()>(f: F) {
+    f()
+}
 
 #[test]
 fn t_fn_move() {

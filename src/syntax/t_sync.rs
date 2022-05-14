@@ -14,8 +14,8 @@ struct Lock<T> {
 }
 
 impl<T> fmt::Debug for Lock<T>
-    where
-        T: fmt::Debug,
+where
+    T: fmt::Debug,
 {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "Lock<{:?}>", self.data.borrow())
